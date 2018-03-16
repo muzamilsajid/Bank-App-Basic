@@ -84,6 +84,12 @@
     <Compile Include="frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmTransfer.Designer.vb">
+      <DependentUpon>frmTransfer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransfer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmUserTransactions.Designer.vb">
       <DependentUpon>frmUserTransactions.vb</DependentUpon>
     </Compile>
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransfer.resx">
+      <DependentUpon>frmTransfer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUserTransactions.resx">
       <DependentUpon>frmUserTransactions.vb</DependentUpon>

@@ -27,6 +27,9 @@ Partial Class frmUserTransactions
         Me.cmdWithDraw = New System.Windows.Forms.Button()
         Me.lblClosingBalance = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.cmdTransfer = New System.Windows.Forms.Button()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblInitialBalance = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -35,9 +38,9 @@ Partial Class frmUserTransactions
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 7)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 25)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(782, 362)
+        Me.DataGridView1.Size = New System.Drawing.Size(782, 344)
         Me.DataGridView1.TabIndex = 0
         '
         'cmdDeposit
@@ -77,11 +80,42 @@ Partial Class frmUserTransactions
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Closing Balance"
         '
+        'cmdTransfer
+        '
+        Me.cmdTransfer.Location = New System.Drawing.Point(303, 375)
+        Me.cmdTransfer.Name = "cmdTransfer"
+        Me.cmdTransfer.Size = New System.Drawing.Size(121, 23)
+        Me.cmdTransfer.TabIndex = 5
+        Me.cmdTransfer.Text = "Transfer Funds"
+        Me.cmdTransfer.UseVisualStyleBackColor = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(524, 6)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(95, 13)
+        Me.Label1.TabIndex = 7
+        Me.Label1.Text = "Oppening Balance"
+        '
+        'lblInitialBalance
+        '
+        Me.lblInitialBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInitialBalance.Location = New System.Drawing.Point(613, 2)
+        Me.lblInitialBalance.Name = "lblInitialBalance"
+        Me.lblInitialBalance.Size = New System.Drawing.Size(181, 20)
+        Me.lblInitialBalance.TabIndex = 6
+        Me.lblInitialBalance.Text = "0"
+        Me.lblInitialBalance.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'frmUserTransactions
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(806, 402)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblInitialBalance)
+        Me.Controls.Add(Me.cmdTransfer)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.lblClosingBalance)
         Me.Controls.Add(Me.cmdWithDraw)
@@ -101,4 +135,7 @@ Partial Class frmUserTransactions
     Friend WithEvents cmdWithDraw As Button
     Friend WithEvents lblClosingBalance As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents cmdTransfer As System.Windows.Forms.Button
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblInitialBalance As System.Windows.Forms.Label
 End Class

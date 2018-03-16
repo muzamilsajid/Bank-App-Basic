@@ -3,54 +3,6 @@ Imports System.Data.OleDb
 
 Public Class frmUserTransactions
 
-    Public Function Balance()
-        Dim OpBalance As Double
-        Dim TotalDebit As Double
-        Dim TotalCredit As Double
-
-        OpBalance = 0
-        TotalDebit = 0
-        TotalCredit = 0
-
-        Try
-            'Initial Balance
-            conn.Open()
-            com = "select initialbalance from tblusers where username='" & CurrentUser & "' and bankname='" & CurrentBank & "'"
-            cmd = New OleDbCommand(com, conn)
-            Dim DR As OleDbDataReader = cmd.ExecuteReader()
-            While DR.Read()
-                OpBalance = DR("InitialBalance")
-            End While
-            conn.Close()
-
-            'Sumation of Debit
-            conn.Open()
-            com = "select sum(debit) as dt from tbltransactions where username='" & CurrentUser & "' and bankname='" & CurrentBank & "'"
-            cmd = New OleDbCommand(com, conn)
-            DR = cmd.ExecuteReader()
-            While DR.Read()
-                TotalDebit = DR("dt")
-            End While
-            conn.Close()
-
-            'Sumation of Credit
-            conn.Open()
-            com = "select sum(Credit) as Cr from tbltransactions where username='" & CurrentUser & "' and bankname='" & CurrentBank & "'"
-            cmd = New OleDbCommand(com, conn)
-            DR = cmd.ExecuteReader()
-            While DR.Read()
-                TotalCredit = DR("Cr")
-            End While
-            conn.Close()
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-            If conn.State = ConnectionState.Open Then
-                conn.Close()
-            End If
-        End Try
-        lblClosingBalance.Text = OpBalance + TotalDebit - TotalCredit
-    End Function
-
     Private Sub cmdDeposit_Click(sender As Object, e As EventArgs) Handles cmdDeposit.Click
         Dim VarDebit As Double
         Try
@@ -103,5 +55,9 @@ Public Class frmUserTransactions
             MessageBox.Show(ex.Message)
             conn.Close()
         End Try
+    End Sub
+
+    Private Sub cmdTransfer_Click(sender As Object, e As EventArgs) Handles cmdTransfer.Click
+        frmTransfer.Show()
     End Sub
 End Class

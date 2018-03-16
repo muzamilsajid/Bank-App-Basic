@@ -5,22 +5,28 @@ Public Module AccountCreationVar
 End Module
 Public Class Account_Creation
     Private Sub cmdAddUser_Click(sender As Object, e As EventArgs) Handles cmdAddUser.Click
-        Try
-            If txtUser.Text = "" Or cmbBankName.Text = "" Or txtPass.Text = "" Then
-                MsgBox("Can Not Leave UserName or Bank Name or Password Empty!!")
-                Exit Sub
-            End If
+        'Try
+        If txtUser.Text = "" Or cmbBankName.Text = "" Or txtPass.Text = "" Then
+            MsgBox("Can Not Leave UserName or Bank Name or Password Empty!!")
+            Exit Sub
+        End If
 
-            Call DoesAccountExist()
-            If AccountExists = False Then
-                conn.Open()
-                cmd.CommandText = "insert into tblusers(UserName,bankname,pass) values('" & txtUser.Text & "','" & cmbBankName.Text & "','" & txtPass.Text & "'"
-                cmd.ExecuteNonQuery()
-                conn.Close()
-            End If
-        Catch ex As Exception
-            MessageBox.Show(ex.Message)
-        End Try
+        Call DoesAccountExist()
+        If AccountExists = False Then
+            conn.Open()
+            cmd.CommandText = "insert into tblusers(UserName,bankname,pass,initialbalance) values('" & txtUser.Text & "','" & cmbBankName.Text & "','" & txtPass.Text & "','" & Val(txtInitialBalance.Text) & "')"
+            cmd.ExecuteNonQuery()
+            conn.Close()
+            MsgBox("Account Created")
+            txtUser.Text = ""
+            txtPass.Text = ""
+            cmbBankName.Text = ""
+            txtInitialBalance.Text = ""
+        End If
+        ' Catch ex As Exception
+        'MessageBox.Show(ex.Message)
+        conn.Close()
+        'End Try
     End Sub
 
     Private Sub Account_Creation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -55,7 +61,6 @@ Public Class Account_Creation
                 MsgBox("Account Exists")
             Else
                 AccountExists = False
-                MsgBox("Account Created")
             End If
             conn.Close()
         Catch ex As Exception
